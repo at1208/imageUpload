@@ -4,11 +4,15 @@ const app = express()
 const upload = require('./multer')
 const cloudinary = require('./cloudinary')
 const fs = require('fs');
+const cors = require('cors')
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json())
+
 
 app.use('/upload-images', upload.array('image'), async (req, res) => {
 
